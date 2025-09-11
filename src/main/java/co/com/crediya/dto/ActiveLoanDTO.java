@@ -10,6 +10,7 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class ActiveLoanDTO {
+    private Long id;
     private BigDecimal amount;
     private int termMonths;
     private BigDecimal interestRate;

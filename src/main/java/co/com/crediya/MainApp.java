@@ -27,12 +27,12 @@ public class MainApp {
         activeLoanDTO.setInterestRate(new BigDecimal("0.0450"));
         activeLoans.add(activeLoanDTO);
 
-        dto.setDocumentNumber("2233");
-        dto.setLoanRequestId(6);
-        dto.setAmount(BigDecimal.valueOf(8000000));
-        dto.setBaseSalary(BigDecimal.valueOf(5000000));
+        dto.setDocumentNumber("1122");
+        dto.setLoanRequestId("27");
+        dto.setAmount(BigDecimal.valueOf(50000));
+        dto.setBaseSalary(BigDecimal.valueOf(8000000));
         dto.setTermMonths(24);
-        dto.setInterestRate(new BigDecimal("0.0450"));
+        dto.setInterestRate(new BigDecimal("0.045"));
         dto.setActiveLoans(activeLoans);
 
         LoanEvaluationResultEvent response = calculateDebtUseCase.execute(dto);

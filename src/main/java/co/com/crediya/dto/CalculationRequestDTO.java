@@ -12,7 +12,7 @@ import java.util.List;
 @Builder(toBuilder = true)
 public class CalculationRequestDTO {
     private String documentNumber;
-    private int loanRequestId;
+    private String loanRequestId;
     private BigDecimal amount;
     private BigDecimal baseSalary;
     private int termMonths;

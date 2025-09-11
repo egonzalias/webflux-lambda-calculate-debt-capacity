@@ -39,7 +39,7 @@ public class Handler implements RequestHandler<SQSEvent, String> {
                 CalculationRequestDTO dto = mapper.readValue(message.getBody(), CalculationRequestDTO.class);
                 LoanEvaluationResultEvent resultEvent = useCase.execute(dto);
                 eventPublisher.publish(resultEvent);
-                context.getLogger().log("Mensaje procesado para el usuario: " + dto.getDocumentNumber());
+                context.getLogger().log("Mensaje procesado para el usuario: " + dto.getDocumentNumber() + ", estado: "+resultEvent.getDecision());
             } catch (Exception e) {
                 context.getLogger().log("Error procesando mensaje SQS: " + message.getBody() + " Error: " + e.getMessage());
                 // RuntimeException in order that message stay to retry
