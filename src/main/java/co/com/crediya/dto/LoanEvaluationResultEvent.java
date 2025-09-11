@@ -11,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Builder(toBuilder = true)
 public class LoanEvaluationResultEvent {
+    private String idLoanRequest;
     private String decision;
     private BigDecimal monthlyInstallment;
     private BigDecimal availableCapacity;

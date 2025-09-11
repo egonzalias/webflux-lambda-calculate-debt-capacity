@@ -4,6 +4,7 @@ import co.com.crediya.dto.ActiveLoanDTO;
 import co.com.crediya.dto.CalculationRequestDTO;
 import co.com.crediya.dto.LoanEvaluationResultEvent;
 import co.com.crediya.dto.PaymentScheduleDTO;
+import co.com.crediya.enums.LoanStatusEnum;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -38,15 +39,16 @@ public class CalculateDebtUseCase {
 
         String decision;
         if (newLoanMonthlyInstallment.compareTo(availableDebtCapacity) > 0) {
-            decision = "RECHAZADO";
+            decision = LoanStatusEnum.RECH.name();
             paymentPlan.clear();
         } else if (requestedAmount.compareTo(baseSalary.multiply(BigDecimal.valueOf(5))) > 0) {
-            decision = "REVISION_MANUAL";
+            decision = LoanStatusEnum.PEND.name();
         } else {
-            decision = "APROBADO";
+            decision = LoanStatusEnum.APROB.name();
         }
 
         return new LoanEvaluationResultEvent(
+                calculationRequestDTO.getLoanRequestId(),
                 decision,
                 newLoanMonthlyInstallment.setScale(2, RoundingMode.HALF_UP),
                 availableDebtCapacity.setScale(2, RoundingMode.HALF_UP),
