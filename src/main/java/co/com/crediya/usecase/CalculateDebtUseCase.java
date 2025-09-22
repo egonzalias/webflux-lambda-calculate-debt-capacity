@@ -43,6 +43,7 @@ public class CalculateDebtUseCase {
             paymentPlan.clear();
         } else if (requestedAmount.compareTo(baseSalary.multiply(BigDecimal.valueOf(5))) > 0) {
             decision = LoanStatusEnum.PEND.name();
+            paymentPlan.clear();
         } else {
             decision = LoanStatusEnum.APROB.name();
         }
